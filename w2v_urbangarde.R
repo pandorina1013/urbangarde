@@ -1,6 +1,7 @@
 library(RMeCab)
 library(tidyverse)
 library(wordVectors)
+library(tsne)
 dic_path <- "/Users/svpcadmin/mecab-ipadic-neologd/build/mecab-ipadic-2.7.0-20070801-neologd-20170907/mecab-user-dict-seed.20170907.csv.dic"
 
 w2v_urbangarde <- function(w2v_txt){
@@ -18,7 +19,14 @@ w2v_urbangarde <- function(w2v_txt){
   return(model)
 }
 
+#get_lyrics(){
+  # なんらかの方法で歌詞を取ってきて一つのテキストファイルに追加していく。
+  # 敬意を込めてtxtファイルに手打ち...しようと思いましたが、さすがに断念しました。
+#}
+
 w2v_txt <- "urbangarde.txt"
 model <- w2v_urbangarde(w2v_txt)
 
-#model %>% nearest_to(vector = model[["前衛"]], n = 20) %>% round(2) %>% print()
+#model %>% nearest_to(vector = .[["前衛"]], n = 20) %>% round(2) %>% print()
+
+model %>% plot()
